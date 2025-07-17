@@ -17,10 +17,10 @@ A complete Docker-based Minecraft server setup built from scratch without using 
     - [Create backup](#create-backup)
     - [Restore from backup](#restore-from-backup)
     - [Server connectivity test.](#server-connectivity-test)
-    - []()
     - [Deploy the app to a V-Server](#deploy-the-app-to-a-v-server)
+    - [Persistence testing](#persistence-testing)
+    - [File descriptions](#file-descriptions)
     - [Manual usage](#manual-usage)
-
 4. [Project Checklist](#project-checklist)
 
 ## Prerequisites
@@ -33,11 +33,11 @@ A complete Docker-based Minecraft server setup built from scratch without using 
 
 With SSH configured (if SSH Keys are provided to GitHub)
 ```bash
-git clone git@github.com:MarcosChavez09/
+git clone git@github.com:MarcosChavez09/mc-server.git
 ```
 Classic HTTPS (if no SSH Keys are provided to GitHub)
 ```bash
-git clone https://github.com/MarcosChavez09/
+git clone https://github.com/MarcosChavez09/mc-server.git
 ```
 After cloning the repository, navigate to:
 
@@ -161,6 +161,10 @@ Use the provided Python script to test server connectivity:
 ./start.sh test
 ```
 
+You should see something like this:
+
+![test_mc_server](imgs/test_mc_sever.png)
+
 ### Deploy the app to a V-Server.
 
 1. Login to your V-Server
@@ -171,7 +175,7 @@ ssh -i ~/.ssh/<name_of_your_key> <your_user_name>@<ip_server_address>
 ```bash
 mkdir -p ~/projects
 cd ~/projects
-git clone git@github.com:MarcosChavez09/.git
+git clone git@github.com:MarcosChavez09/mc-server.git
 ```
 
 3. Install Docker on your V-Server if you haven't done so yet. 
@@ -221,27 +225,14 @@ git clone git@github.com:MarcosChavez09/.git
    - Server configuration should persist
 
 
-### File descriptions
+### File descriptions.
 
 - **Dockerfile**: Custom container that downloads and sets up Minecraft server from scratch
 - **docker-compose.yml**: Defines the `mc-server` service with proper configuration
 - **README.md**: Comprehensive project documentation
 - **.dockerignore**: Excludes unnecessary files from Docker build
 - **.gitignore**: Prevents sensitive files from being committed
-
-
-### Log Analysis
-
-Server logs are available via:
-```bash
-docker-compose logs -f mc-server
-```
-
-Common log messages:
-- `[Server] Starting minecraft server version 1.20.4`: Server starting
-- `[Server] Done`: Server fully started
-- `[Server] Starting remote control listener`: RCON enabled
-- `[Server] <player> joined the game`: Player connected 
+- **test_server.py**: A Python scrtipt that uses `mcserver` to check the Minecraft server.
 
 ## Project Checklist
 
