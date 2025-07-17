@@ -44,7 +44,7 @@ git clone https://github.com/MarcosChavez09/mc-server.git
 After cloning the repository, navigate to:
 
 ```bash
-cd minecraft-server
+cd mc-server
 ```
 
 Run the [start.sh](start.sh) script to start the DB and Web containers locally:
@@ -178,6 +178,7 @@ ssh -i ~/.ssh/<name_of_your_key> <your_user_name>@<ip_server_address>
 mkdir -p ~/projects
 cd ~/projects
 git clone git@github.com:MarcosChavez09/mc-server.git
+cd mc-server
 ```
 
 3. Install Docker on your V-Server if you haven't done so yet. 
