@@ -25,35 +25,35 @@ print_error() {
 # Function to start the server
 start_server() {
     print_status "Starting Minecraft server..."
-    docker-compose up -d
-    print_status "Server started! Check logs with: docker-compose logs -f mc-server"
+    docker compose up -d
+    print_status "Server started! Check logs with: docker compose logs -f mc-server"
     print_status "Server will be accessible at: localhost:8888"
 }
 
 # Function to stop the server
 stop_server() {
     print_status "Stopping Minecraft server..."
-    docker-compose down
+    docker compose down
     print_status "Server stopped!"
 }
 
 # Function to restart the server
 restart_server() {
     print_status "Restarting Minecraft server..."
-    docker-compose restart
+    docker compose restart
     print_status "Server restarted!"
 }
 
 # Function to show server status
 show_status() {
     print_status "Server status:"
-    docker-compose ps
+    docker compose ps
 }
 
 # Function to show logs
 show_logs() {
     print_status "Showing server logs (Ctrl+C to exit):"
-    docker-compose logs -f mc-server
+    docker compose logs -f mc-server
 }
 
 # Function to backup the world
@@ -64,14 +64,14 @@ backup_world() {
     mkdir -p backups
     
     # Stop the server for clean backup
-    docker-compose down
+    docker compose down
     
     # Create timestamped backup
     BACKUP_NAME="backup_$(date +%Y%m%d_%H%M%S)"
     docker run --rm -v minecraft-server_minecraft_data:/data -v $(pwd)/backups:/backup ubuntu tar czf /backup/$BACKUP_NAME.tar.gz -C /data .
     
     # Start the server
-    docker-compose up -d
+    docker compose up -d
     
     print_status "Backup created: ./backups/$BACKUP_NAME.tar.gz"
 }
