@@ -62,7 +62,7 @@ The `start.sh` script will run the `docker-compose`, create the DB volume, build
 
 The server will be reacheable under http://localhost:8888
 
-> **_NOTE:_** If you visit http://<localhost_or_server_IP>:8888 you will see an **ERR_EMPTY_RESPONSE** message. This is a normal behavior and the reason is, that Minecraft Server does not send any HTTP data to the browser, it only respons to request from Minecraft clients.
+> **_NOTE:_** If you visit http://<localhost_or_server_IP>:8888 you will see an **ERR_EMPTY_RESPONSE** message. This is a normal behavior and the reason is, that Minecraft Server does not send any HTTP data to the browser, it only responds to request from Minecraft clients.
 
 
 To onnect to your server:
