@@ -25,9 +25,11 @@ A complete Docker-based Minecraft server setup built from scratch without using 
 
 ## Prerequisites
 
-- Docker and Docker Compose installed on your system
+- A user with `sudo` rights to a V-Server
+- Docker and Docker Compose installed in your V-Server
+- GitHub account to connect via `SSH keys`
+- Connection from your V-Server to GitHub with `SSH Keys`
 - At least 2GB RAM available for the server
-- Port 8888 available on your system
 
 ## Quickstart
 
@@ -223,6 +225,15 @@ git clone git@github.com:MarcosChavez09/mc-server.git
 3. **Verify data persistence**:
    - World data should remain intact
    - Server configuration should persist
+4. **Manual server testing**:
+   - Local testing:
+   ```bash
+   python test_server.py localhost 8888
+   ```
+   - V-Server testing:
+   ```bash
+   python test_server.py <your_server_ip> 8888
+   ```   
 
 
 ### File descriptions.
