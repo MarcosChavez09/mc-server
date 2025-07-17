@@ -162,6 +162,7 @@ Use the provided Python script to test server connectivity:
 ```bash
 ./start.sh test
 ```
+If `mcserver` is not found, the script will installed for you and then you need to run the `./start.sh test` once more.
 
 You should see something like this:
 
