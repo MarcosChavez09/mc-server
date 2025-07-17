@@ -62,17 +62,17 @@ The `start.sh` script will run the `docker-compose`, create the DB volume, build
 
 The server will be reacheable under http://localhost:8888
 
-> **_NOTE:_** If you visit http://<localhost_or_server_IP>:8888 you will see an **ERR_EMPTY_RESPONSE** message. This is a normal behavior and the reason is, that Minecraft Server does not send any HTTP data to the browser, it only responds to request from Minecraft clients.
+> **_NOTE:_** If you visit http://<localhost_or_server_IP>:8888 you will see an **ERR_EMPTY_RESPONSE** message. This is a normal behavior and the reason is, that Minecraft Server does not send any HTTP data to the browser, it only responds to requests from Minecraft clients.
 
 
-To onnect to your server:
+To connect to your server:
    - Open Minecraft client
    - Go to Multiplayer → Add Server
    - Enter your server IP and port 8888
 
 ## Usage
 
-To create the Minecraft Sever Docker conatiner you only need to run the `start.sh` script. The script offers the following flags:
+To create the Minecraft Sever Docker container you only need to run the `start.sh` script. The script offers the following flags:
 
 | Flag              | Description | example |
 | :---------------- | :------ | :---- |
@@ -128,7 +128,7 @@ or
 ./start.sh start
 ```
 
-### Restore from backup
+### Restore from backup.
 
 Stop the server first:
 ```bash
@@ -140,7 +140,7 @@ or
 ./start.sh down
 ```
 
-Restore‚:
+Restore:
 ```bash
 docker run --rm -v minecraft-server_minecraft_data:/data -v $(pwd):/backup ubuntu tar xzf /backup/backup-file.tar.gz -C /data
 ```
