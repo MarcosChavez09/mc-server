@@ -79,7 +79,7 @@ To create the Minecraft Sever Docker container you only need to run the `start.s
 | start        |   Starts the server   | ./start start |
 | down           |   Stops the server   | ./start down |
 | restart    | Restarts the server   | ./start restart |
-| status|  Show server status   | ./start status |
+| status|  Show server status   | ./start status (localhost) or ./start <server_IP> 8888 |
 | logs|  Show server status   | ./start logs |
 | backup|  Create a world backup   | ./start backup |
 | test|  Server connectivity (Uses Python `mcstatus`)   | ./start test |
@@ -159,8 +159,14 @@ or
 
 Use the provided Python script to test server connectivity:
 
+If you test it locally (localhost)
 ```bash
 ./start.sh test
+```
+
+On a V-Server
+```bash
+./start.sh <server_IP> 8888
 ```
 If `mcserver` is not found, the script will installed for you and then you need to run the `./start.sh test` once more.
 
