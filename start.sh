@@ -78,6 +78,11 @@ backup_world() {
 
 # Function to test server connectivity
 test_server() {
+
+    # Use first argument as host, default to localhost
+    HOST="${1:-localhost}"
+    PORT="${2:-8888}"
+
     print_status "Testing server connectivity..."
     
     # Check if Python and mcstatus are available
@@ -85,15 +90,21 @@ test_server() {
         print_error "Python3 is not installed. Please install Python3 to run tests."
         return 1
     fi
+
+     # Check if pip3 is available
+    if ! command -v pip3 &> /dev/null; then
+        print_error "pip3 is not installed. Please install pip3 to run tests."
+        return 1
+    fi
     
     # Install mcstatus if not available
     if ! python3 -c "import mcstatus" &> /dev/null; then
         print_warning "mcstatus library not found. Installing..."
-        pip3 install -r requirements.txt
+        pip3 install --user mcstatus
     fi
     
     # Run the test script
-    python3 test_server.py localhost 8888
+    python3 test_server.py $HOST $PORT
 }
 
 # Function to show help
@@ -116,9 +127,9 @@ show_help() {
     echo "  $0 start"
     echo "  $0 logs"
     echo "  $0 backup"
-    echo "  $0 test"
+    echo "  $0 test (localhost) or $0 test <server_IP> <port>"
     echo ""
-    echo "Server will be accessible at: localhost:8888"
+    echo "Server will be accessible at: localhost_or_server_IP:8888"
 }
 
 # Main script logic
