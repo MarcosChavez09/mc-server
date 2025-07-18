@@ -157,7 +157,7 @@ or
 
 ### Server connectivity test.
 
-Use the provided Python script to test server connectivity:
+After running the `start.sh start` script, open your browser at `http:<localhost_or_ip_server_address>:8888` and use the provided Python script to test server connectivity:
 
 If you test it locally (localhost)
 ```bash
@@ -166,7 +166,7 @@ If you test it locally (localhost)
 
 On a V-Server
 ```bash
-./start.sh <server_IP> 8888
+./start.sh <ip_server_address> 8888
 ```
 If `mcserver` is not found, the script will installed for you and then you need to run the `./start.sh test` once more.
 
@@ -199,7 +199,7 @@ cd mc-server
 
 6. Test the server conection using `mcstatus`.
 ```bash
-./start.sh test
+./start.sh test <ip_server_address> 8888
 ```
 
 ### Manual Usage.
@@ -240,7 +240,7 @@ cd mc-server
    ```
    - V-Server testing:
    ```bash
-   python test_server.py <your_server_ip> 8888
+   python test_server.py <ip_server_address> 8888
    ```   
 
 
