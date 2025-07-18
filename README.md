@@ -27,6 +27,7 @@ A complete Docker-based Minecraft server setup built from scratch without using 
 
 - A user with `sudo` rights to a V-Server
 - Docker and Docker Compose installed in your V-Server
+- The pip package manager in your V-Server
 - GitHub account to connect via `SSH keys`
 - Connection from your V-Server to GitHub with `SSH Keys`
 - At least 2GB RAM available for the server
@@ -62,7 +63,7 @@ The `start.sh` script will run the `docker-compose`, create the DB volume, build
 
 The server will be reacheable under http://localhost:8888
 
-> **_NOTE:_** If you visit http://<localhost_or_server_IP>:8888 you will see an **ERR_EMPTY_RESPONSE** message. This is a normal behavior and the reason is, that Minecraft Server does not send any HTTP data to the browser, it only responds to requests from Minecraft clients.
+> **_NOTE:_** If you visit http://<localhost_or_ip_server_address>:8888 you will see an **ERR_EMPTY_RESPONSE** message. This is a normal behavior and the reason is, that Minecraft Server does not send any HTTP data to the browser, it only responds to requests from Minecraft clients.
 
 
 To connect to your server:
@@ -159,14 +160,14 @@ or
 
 After running the `start.sh start` script, open your browser at `http:<localhost_or_ip_server_address>:8888` and use the provided Python script to test server connectivity:
 
-If you test it locally (localhost)
+If you test it locally:
 ```bash
 ./start.sh test
 ```
 
-On a V-Server
+On a V-Server:
 ```bash
-./start.sh <ip_server_address> 8888
+./start.sh test <ip_server_address> 8888
 ```
 If `mcserver` is not found, the script will installed for you and then you need to run the `./start.sh test` once more.
 
