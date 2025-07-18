@@ -27,7 +27,7 @@ start_server() {
     print_status "Starting Minecraft server..."
     docker compose up -d
     print_status "Server started! Check logs with: docker compose logs -f mc-server"
-    print_status "Server will be accessible at: localhost:8888"
+    print_status "Server will be accessible at: localhost_or_ip_server_address:8888"
 }
 
 # Function to stop the server
@@ -104,7 +104,7 @@ test_server() {
     fi
     
     # Run the test script
-    python3 test_server.py $HOST $PORT
+    python3 test_server.py "$HOST" "$PORT"
 }
 
 # Function to show help
@@ -153,7 +153,8 @@ case "${1:-help}" in
         backup_world
         ;;
     test)
-        test_server
+        shift
+        test_server "$@"
         ;;
     help|--help|-h)
         show_help
