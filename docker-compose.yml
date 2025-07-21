@@ -1,0 +1,16 @@
+# Minecraft server docker-compose file
+services:
+  mc-server:
+    build: .
+    container_name: minecraft-server
+    ports:
+      - "8888:25565"
+    volumes:
+      - minecraft_data:/opt/minecraft
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+# Volumes. This is where the server data is stored.
+volumes:
+  minecraft_data:
+    driver: local 
